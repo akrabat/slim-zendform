@@ -1,0 +1,10 @@
+{
+    "name": "akrabat/slim-zendform",
+    "description": "Test app integrating ZF2's Form into a Slim application",
+    "license": "MIT",
+    "require": {
+        "slim/slim": "2.*",
+        "zendframework/zend-form": "2.3.*",
+        "zendframework/zend-servicemanager": "2.3.*"
+    }
+}
