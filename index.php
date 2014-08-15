@@ -1,6 +1,7 @@
 <?php
 
 require 'vendor/autoload.php';
+$app = new \Slim\Slim();
 
 $config = [
     'validators' => array(
@@ -18,14 +19,11 @@ $config = [
 
 ];
 
-
-$app = new \Slim\Slim();
 $smConfigurator = new RKA\ServiceManagerConfigurator();
 $app->serviceManager = $smConfigurator->createServiceManager($config);
 $app->view(new RKA\View());
 
 $app->map('/', function () use ($app) {
-
     $formElementManager = $app->serviceManager->get('FormElementManager');
     $form = $formElementManager->get("RKA\ExampleForm");
 

@@ -7,23 +7,15 @@ use Zend\InputFilter\InputFilterProviderInterface;
 
 class ExampleForm extends Form implements InputFilterProviderInterface
 {
-    public function __construct($name = null, $options = array())
-    {
-        $name = "example";
-        parent::__construct($name, $options);
-
-        // $this->init();
-    }
-
     public function init()
     {
         $this->add([
             'name' => 'email',
-            'type' => 'text',
             'options' => [
                 'label' => 'Email address',
             ],
             'attributes' => [
+                'id'       => 'email',
                 'class'    => 'form-control',
                 'required' => 'required',
             ],

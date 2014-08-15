@@ -9,7 +9,7 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 
 class ServiceManagerConfigurator
 {
-    // list of plugin managers to register (key name => class name)
+    // List of plugin managers to register (key name => class name)
     public $pluginManagers = [
         'FilterManager'      => 'Zend\Filter\FilterPluginManager',
         'FormElementManager' => 'Zend\Form\FormElementManager',
@@ -18,7 +18,7 @@ class ServiceManagerConfigurator
         'ViewHelperManager'  => 'Zend\View\HelperPluginManager',
     ];
     
-    // config keys to look for in the config array (config key name => sm key name)
+    // List of config keys to look for in the config array (config key name => sm key name)
     public $configKeys = [
         'validators'      => 'ValidatorManager',
         'filters'         => 'FilterManager',
@@ -27,6 +27,7 @@ class ServiceManagerConfigurator
         'view_helpers'    => 'ViewHelperManager',
     ];
 
+    // Main method that does the work and gives us back a configured ServiceManager
     public function createServiceManager(array $config)
     {
         // create serviceManager
@@ -58,6 +59,7 @@ class ServiceManagerConfigurator
         return $serviceManager;
     }
 
+    // Helper method to apply config to the service manager and all plugin managers
     public function applyConfig($serviceManager, $config)
     {
         foreach ($this->configKeys as $keyName => $thisManager) {
