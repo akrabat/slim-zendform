@@ -6,10 +6,10 @@ use Zend\ServiceManager\Config as ServiceConfig;
 use Zend\ServiceManager\ServiceManager;
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
-use Zend\Stdlib\ArrayUtils;
 
 class ServiceManagerConfigurator
 {
+    // list of plugin managers to register
     public $pluginManagers = [
         'FilterManager'      => 'Zend\Filter\FilterPluginManager',
         'FormElementManager' => 'Zend\Form\FormElementManager',
@@ -18,6 +18,7 @@ class ServiceManagerConfigurator
         'ViewHelperManager'  => 'Zend\View\HelperPluginManager',
     ];
     
+    // config keys to look for in the config array
     public $configKeys = [
         'validators'      => 'ValidatorManager',
         'filters'         => 'FilterManager',
@@ -28,8 +29,10 @@ class ServiceManagerConfigurator
 
     public function createServiceManager(array $config)
     {
-        // create serviceManager and set an initializer for ServiceLocatorAwareInterface
+        // create serviceManager
         $serviceManager = new ServiceManager();
+
+        // set an initializer for ServiceLocatorAwareInterface
         $serviceManager->addInitializer(
             function ($instance, ServiceLocatorInterface $serviceLocator) {
                 if ($instance instanceof ServiceLocatorAwareInterface) {
