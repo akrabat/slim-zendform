@@ -5,7 +5,10 @@
     "require": {
         "slim/slim": "2.*",
         "zendframework/zend-form": "2.3.*",
-        "zendframework/zend-servicemanager": "2.3.*"
+        "zendframework/zend-servicemanager": "2.3.*",
+        "zendframework/zend-i18n": "2.3.*",
+        "zendframework/zend-view": "2.3.*",
+        "zendframework/zend-escaper": "2.3.*"
     },
     "autoload": {
         "psr-4": {

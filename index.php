@@ -2,9 +2,6 @@
 
 require 'vendor/autoload.php';
 
-
-$app = new \Slim\Slim();
-
 $config = [
     'validators' => array(
         'invokables' => array(
@@ -21,9 +18,11 @@ $config = [
 
 ];
 
-$serviceManager = new \Zend\ServiceManager\ServiceManager();
-$smConfigurator = new RKA\ServiceManagerConfigurator($serviceManager, $config);
-$app->container->set('serviceManager', $serviceManager);
+
+$app = new \Slim\Slim();
+$smConfigurator = new RKA\ServiceManagerConfigurator();
+$app->serviceManager = $smConfigurator->createServiceManager($config);
+$app->view(new RKA\View());
 
 $app->map('/', function () use ($app) {
 
@@ -32,14 +31,13 @@ $app->map('/', function () use ($app) {
 
     if ($app->request->isPost()) {
         $data = $app->request->post();
-        // $data = array('email' => 'asdf');
         $form->setData($data);
         $isValid = $form->isValid();
-        LDBG($isValid);
-        LDBG($form->getMessages());
-        exit;
+        if ($form->isValid()) {
+            echo "Success!";
+            exit;
+        }
     }
-
 
     $app->render('home.php', array(
         'form' => $form
