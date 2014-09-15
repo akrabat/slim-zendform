@@ -5,19 +5,18 @@ $app = new \Slim\Slim();
 
 // Set up service manager for Zend\Form
 $config = [
-    'validators' => array(
-        'invokables' => array(
+    'validators' => [
+        'invokables' => [
             'email-address' => 'RKA\Validator\EmailAddress',
             'string-length' => 'RKA\Validator\StringLength',
             // etc.
-        ),
-    ),
-    'form_elements' => array(
-        'invokables' => array(
+        ],
+    ],
+    'form_elements' => [
+        'invokables' => [
             'RKA\ExampleForm'  => 'RKA\ExampleForm',
-        ),
-    ),
-
+        ],
+    ],
 ];
 
 $smConfigurator = new RKA\ServiceManagerConfigurator();
@@ -39,9 +38,9 @@ $app->map('/', function () use ($app) {
         }
     }
 
-    $app->render('home.php', array(
+    $app->render('home.php', [
         'form' => $form
-    ));
+    ]);
 })->via('GET', 'POST');
 
 // Run application
