@@ -29,6 +29,7 @@ class ExampleForm extends Form implements InputFilterProviderInterface
             ],
             'attributes' => [
                 'class' => 'btn btn-default',
+                'type'  => 'submit',
             ],
         ]);
     }
