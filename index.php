@@ -47,7 +47,8 @@ $view->getInstance()->registerUndefinedFunctionCallback(
         }
 
         $callable = [$renderer->plugin($name), '__invoke'];
-        return new \Twig_SimpleFunction(null, $callable, ['is_safe' => ['html']]);
+        $options  = ['is_safe' => ['html']];
+        return new \Twig_SimpleFunction(null, $callable, $options);
     }
 );
 
