@@ -15,9 +15,9 @@
       
     <form method="POST" role="form">
         <div class="form-group">
-            <?= $this->formRow($form->get('email')) ?>
+            {{ formRow(form.get('email')) }}
         </div>
-        <?= $this->formElement($form->get('submit')) ?>
+        {{ formElement(form.get('submit')) }}
     </form>
         
   </div>

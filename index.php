@@ -1,7 +1,20 @@
 <?php
 
 require 'vendor/autoload.php';
-$app = new \Slim\Slim();
+$app = new \Slim\Slim([
+    'view' => new \Slim\Views\Twig()
+]);
+
+// Configure Twig
+$view = $app->view();
+$view->parserOptions = [
+    'debug' => true,
+    'cache' => false,
+];
+$view->parserExtensions = [
+    new \Slim\Views\TwigExtension(),    // useful Slim integration( urlfor, etc)
+    new Twig_Extension_Debug(),         // required for {{ dump() }}
+];
 
 // Set up service manager for Zend\Form
 $config = [
@@ -21,7 +34,22 @@ $config = [
 
 $smConfigurator = new RKA\ServiceManagerConfigurator();
 $app->serviceManager = $smConfigurator->createServiceManager($config);
-$app->view(new RKA\View());
+
+// Set up Twig fallback function
+$viewHelperManager = $app->serviceManager->get('ViewHelperManager');
+$renderer = new \Zend\View\Renderer\PhpRenderer();
+$renderer->setHelperPluginManager($viewHelperManager);
+
+$view->getInstance()->registerUndefinedFunctionCallback(
+    function ($name) use ($viewHelperManager, $renderer) {
+        if (!$viewHelperManager->has($name)) {
+            return false;
+        }
+
+        $callable = [$renderer->plugin($name), '__invoke'];
+        return new \Twig_SimpleFunction(null, $callable, ['is_safe' => ['html']]);
+    }
+);
 
 // Setup routes
 $app->map('/', function () use ($app) {
@@ -38,7 +66,7 @@ $app->map('/', function () use ($app) {
         }
     }
 
-    $app->render('home.php', [
+    $app->render('home.twig', [
         'form' => $form
     ]);
 })->via('GET', 'POST');

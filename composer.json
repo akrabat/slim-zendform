@@ -8,7 +8,9 @@
         "zendframework/zend-servicemanager": "2.3.*",
         "zendframework/zend-i18n": "2.3.*",
         "zendframework/zend-view": "2.3.*",
-        "zendframework/zend-escaper": "2.3.*"
+        "zendframework/zend-escaper": "2.3.*",
+        "twig/twig": "1.16.*",
+        "slim/views": "0.1.*"
     },
     "autoload": {
         "psr-4": {

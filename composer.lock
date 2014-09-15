@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "34e36b40aaf799bce38f950ef36e7755",
+    "hash": "3c2f8a7db962494015faf113dc2e1aa0",
     "packages": [
         {
             "name": "slim/slim",
@@ -51,6 +51,117 @@
                 "router"
             ],
             "time": "2014-04-05 18:33:59"
+        },
+        {
+            "name": "slim/views",
+            "version": "0.1.2",
+            "target-dir": "Slim/Views",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/codeguy/Slim-Views.git",
+                "reference": "f0a05ea0b654218e40de692ed7cddcad1cf4b828"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/codeguy/Slim-Views/zipball/f0a05ea0b654218e40de692ed7cddcad1cf4b828",
+                "reference": "f0a05ea0b654218e40de692ed7cddcad1cf4b828",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "slim/slim": ">=2.4.0"
+            },
+            "suggest": {
+                "smarty/smarty": "Smarty templating system",
+                "twig/twig": "Twig templating system"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Slim\\Views": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrew Smith",
+                    "email": "a.smith@silentworks.co.uk",
+                    "homepage": "http://www.silentworks.co.uk/"
+                },
+                {
+                    "name": "Josh Lockhart",
+                    "email": "info@joshlockhart.com",
+                    "homepage": "http://www.joshlockhart.com/"
+                }
+            ],
+            "description": "Smarty and Twig View Parser package for the Slim Framework",
+            "homepage": "http://github.com/codeguy/Slim-Views",
+            "keywords": [
+                "extensions",
+                "slimphp",
+                "templating"
+            ],
+            "time": "2014-04-03 16:31:10"
+        },
+        {
+            "name": "twig/twig",
+            "version": "v1.16.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fabpot/Twig.git",
+                "reference": "8ce37115802e257a984a82d38254884085060024"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fabpot/Twig/zipball/8ce37115802e257a984a82d38254884085060024",
+                "reference": "8ce37115802e257a984a82d38254884085060024",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.4"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.16-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Twig_": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Armin Ronacher",
+                    "email": "armin.ronacher@active-4.com",
+                    "role": "Project Founder"
+                },
+                {
+                    "name": "Twig Team",
+                    "homepage": "https://github.com/fabpot/Twig/graphs/contributors",
+                    "role": "Contributors"
+                }
+            ],
+            "description": "Twig, the flexible, fast, and secure template language for PHP",
+            "homepage": "http://twig.sensiolabs.org",
+            "keywords": [
+                "templating"
+            ],
+            "time": "2014-07-05 12:19:05"
         },
         {
             "name": "zendframework/zend-escaper",
