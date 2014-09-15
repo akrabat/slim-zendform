@@ -3,6 +3,7 @@
 require 'vendor/autoload.php';
 $app = new \Slim\Slim();
 
+// Set up service manager for Zend\Form
 $config = [
     'validators' => array(
         'invokables' => array(
@@ -23,6 +24,7 @@ $smConfigurator = new RKA\ServiceManagerConfigurator();
 $app->serviceManager = $smConfigurator->createServiceManager($config);
 $app->view(new RKA\View());
 
+// Setup routes
 $app->map('/', function () use ($app) {
     $formElementManager = $app->serviceManager->get('FormElementManager');
     $form = $formElementManager->get("RKA\ExampleForm");
@@ -42,4 +44,5 @@ $app->map('/', function () use ($app) {
     ));
 })->via('GET', 'POST');
 
+// Run application
 $app->run();
